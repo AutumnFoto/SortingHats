@@ -1,4 +1,5 @@
 
+
 "use strict";
 
 const initalButtonClick = () => {
@@ -33,3 +34,6 @@ const init = () => {
 }
 
 init();
+
+console.log("hey!")
+
