@@ -6,8 +6,7 @@ const initalButtonClick = () => {
 
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
-
-  selectedDiv.innerHTML = textToPrint;
+ selectedDiv.innerHTML = textToPrint;
 };
 
 const buildForm = () => {
@@ -36,25 +35,31 @@ const buildForm = () => {
 
 const nameButtonClick = () => {
     document.querySelector('#nameButton').addEventListener('click', getName);
+    document.querySelector('#nameButton').addEventListener('click', buildCard);
 }
+
 
 
 let studentNames = []
 
 const getName = () => {
     const name = document.getElementById('inlineFormInput').value; 
-    console.log(studentNames)
-    studentNames.push(name);
-    console.log(studentNames);
-    return studentNames;
-   
-
-
+    return studentNames.push(name);
 }
 
 
 const buildCard = () => {
+let domString = '';
+const houses = ['Griffendor', 'Slytherin', 'HufflePuff', 'RavenClaw']
+for( let i =0; i < studentNames.length; i++) {
+domString +=  `<div class="card" style="width: 18rem;">`;
+domString += `<div class="card-body">`;
+domString +=  `<h5 class="card-title">${studentNames[i]}</h5>`;
+domString +=   `<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>`;
+domString+= `</div></div>`
+}
 
+printToDom('#studentNames',domString)
 
 }
 
