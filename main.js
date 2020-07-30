@@ -6,8 +6,7 @@ const initalButtonClick = () => {
 
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
-
-  selectedDiv.innerHTML = textToPrint;
+ selectedDiv.innerHTML = textToPrint;
 };
 
 const buildForm = () => {
@@ -51,7 +50,8 @@ const getName = () => {
 
 const buildCard = () => {
 let domString = '';
-for( let i =0; i < studentNames.length; i ++) {
+const houses = ['Griffendor', 'Slytherin', 'HufflePuff', 'RavenClaw']
+for( let i =0; i < studentNames.length; i++) {
 domString +=  `<div class="card" style="width: 18rem;">`;
 domString += `<div class="card-body">`;
 domString +=  `<h5 class="card-title">${studentNames[i]}</h5>`;
@@ -59,7 +59,7 @@ domString +=   `<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>`;
 domString+= `</div></div>`
 }
 
-printToDom('#studentCard',domString)
+printToDom('#studentNames',domString)
 
 }
 
