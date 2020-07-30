@@ -31,38 +31,66 @@ const buildForm = () => {
 
   printToDom('#form', domString);
   nameButtonClick();
+  
 };
 
 const nameButtonClick = () => {
     document.querySelector('#nameButton').addEventListener('click', getName);
     document.querySelector('#nameButton').addEventListener('click', buildCard);
+    
 }
 
+const expelButtonClick= () => {
+    document.querySelector('#studentNames').addEventListener('click', deleteItems);
+    
+}
 
-
-let studentNames = []
+let studentNames = [];
 
 const getName = () => {
     const name = document.getElementById('inlineFormInput').value; 
-    return studentNames.push(name);
+ studentNames.push({name: name, house: houses[getHouse()]});
 }
+
+
+const getHouse=()=> {
+ return Math.floor(Math.random()*4);
+}
+
+
+
 
 
 const buildCard = () => {
 let domString = '';
-const houses = ['Griffendor', 'Slytherin', 'HufflePuff', 'RavenClaw']
+const houses = ['Gryffindor', 'Slytherin', 'HufflePuff', 'RavenClaw']
 for( let i =0; i < studentNames.length; i++) {
 domString +=  `<div class="card" style="width: 18rem;">`;
-domString += `<div class="card-body">`;
-domString +=  `<h5 class="card-title">${studentNames[i]}</h5>`;
-domString +=   `<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>`;
+domString += `<div class="card-body" id="expel">`;
+domString +=  `<h5 class="card-title">${studentNames[i].name}</h5>`;
+domString +=  `<h6 class="card-subtitle mb-2 text-muted">${studentNames[i].house}</h6>`;
+domString += `<button type="button" class="btn btn-danger" id = ${i}>Expel</button>`
 domString+= `</div></div>`
 }
 
+// put "required" in input spot
 printToDom('#studentNames',domString)
+expelButtonClick();
 
-}
+};
 
+const deleteItems = (e) => {
+    console.log("Delete Me!", e.target.id);
+
+    const ctype = e.target.type;
+    const target= e.target.id;
+
+    if(ctype=== 'button') { 
+        studentNames.splice(target,1)
+
+        buildCard();
+     }
+    }
 
 
 const init = () => {
@@ -70,4 +98,5 @@ const init = () => {
   
 };
 
-init();
+init(); 
+
