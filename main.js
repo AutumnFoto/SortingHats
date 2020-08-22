@@ -1,5 +1,7 @@
 "use strict";
-const houses = ['Gryffindor', 'Slytherin', 'HufflePuff', 'RavenClaw']
+const houses = ["Gryffindor","Slytherin","Hufflepuff","Ravenclaw"];
+
+
 const initalButtonClick = () => {
   document.querySelector('#sortButton').addEventListener('click', buildForm);
   };
@@ -10,32 +12,27 @@ const printToDom = (divId, textToPrint) => {
 };
 
 const buildForm = () => {
-  let domString = `<form>
-  <div class='form-row align-items-center'>
-            <div class='col-auto'>
-              <label class='sr-only' for='inlineFormInput'>Name</label>
-              <input 
-              type='text' 
-              class='form-control mb-2'
-              id='inlineFormInput'
-              placeholder='Student Name'
-              required />
-            </div>
-            <div class='col-auto'>
-              <button type='submit' class='btn btn-primary mb-2'
-              id= 'nameButton'> Sort!</button>
-            </div>
-          </div>
-          </form>`;
-
+  let domString = `<form id="student-form">
+                      <h1>Enter Name:</h1>
+                      <div class="form-row align-items-center">
+                          <div class="col-auto">
+                              <label class="sr-only" for="inlineFormInput">Name</label>
+                              <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Student Name" required>
+                          </div>
+                          <div class="col-auto">
+                              <button type="submit" class="btn btn-primary mb-2" id="sort-button">Sort!</button>
+                          </div>
+                      </div>
+                  </form>`
   printToDom('form', domString);
   nameButtonClick();
-  
 };
+  
+
 
 const nameButtonClick = () => {
-    document.querySelector('#nameButton').addEventListener('click', getName);
-    document.querySelector('#nameButton').addEventListener('click', buildCard);
+    document.querySelector('#sort-button').addEventListener('click', getName);
+    document.querySelector('#sort-button').addEventListener('click', buildCard);
     
 };
 
@@ -50,6 +47,7 @@ const getName = () => {
     const name = document.getElementById('inlineFormInput').value; 
  studentNames.push({name:name, house:houses[getHouse()]});
 };
+
 
 
 const getHouse=()=> {
@@ -78,6 +76,7 @@ expelButtonClick();
 
 };
 
+
 const deleteItems = (e) => {
     console.log('Delete Me!', e.target.id);
 
@@ -91,6 +90,7 @@ const deleteItems = (e) => {
      }
     };
 
+  
 
 const init = () => {
   initalButtonClick();
@@ -98,4 +98,3 @@ const init = () => {
 };
 
 init(); 
-
