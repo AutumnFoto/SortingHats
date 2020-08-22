@@ -1,5 +1,7 @@
 "use strict";
-const houses = ['Gryffindor', 'Slytherin', 'HufflePuff', 'RavenClaw']
+const houses = ["Gryffindor","Slytherin","Hufflepuff","Ravenclaw"];
+
+
 const initalButtonClick = () => {
   document.querySelector('#sortButton').addEventListener('click', buildForm);
   };
@@ -29,8 +31,8 @@ const buildForm = () => {
 
 
 const nameButtonClick = () => {
-    document.querySelector('#nameButton').addEventListener('click', getName);
-    document.querySelector('#nameButton').addEventListener('click', buildCard);
+    document.querySelector('#sort-button').addEventListener('click', getName);
+    document.querySelector('#sort-button').addEventListener('click', buildCard);
     
 };
 
@@ -45,6 +47,7 @@ const getName = () => {
     const name = document.getElementById('inlineFormInput').value; 
  studentNames.push({name:name, house:houses[getHouse()]});
 };
+
 
 
 const getHouse=()=> {
@@ -87,8 +90,7 @@ const deleteItems = (e) => {
      }
     };
 
-    
-
+  
 
 const init = () => {
   initalButtonClick();
@@ -96,4 +98,3 @@ const init = () => {
 };
 
 init(); 
-
